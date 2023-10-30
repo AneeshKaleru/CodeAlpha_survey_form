@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta name="description" content="A survey form" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Survey Form</title>
+
+    <style>
+      * {
+        box-sizing: border-box;
+        font-family: "Courier New", Courier, monospace;
+      }
+
+      html {
+        font-family: var(--system-ui);
+        font-size: 18px;
+        line-height: 1.5;
+        color: #251c2f;
+        min-height: 100%;
+      }
+
+      body {
+        margin: 0;
+        padding: 10px;
+        background-image: linear-gradient(#ffc300, #fff8e0);
+      }
+
+      #description,
+      #title {
+        padding: 0 10px;
+        text-align: center;
+      }
+
+      #description {
+        font-weight: bold;
+      }
+
+      #survey-form {
+        border-radius: 10px;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+        margin: 0 auto;
+        max-width: 700px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+      }
+
+      #dropdown {
+        /*accent-color: #FF0F7BFF;*/
+        box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.25);
+        color: #251c2f;
+        background-color: white;
+      }
+
+      #specify {
+        display: none;
+      }
+
+      #checkbox-7:checked ~ #specify {
+        display: block;
+      }
+
+      #textarea {
+        min-height: 5rem;
+        max-height: 20rem;
+        width: 100%;
+        resize: vertical;
+      }
+
+      .sm {
+        font-size: 0.8em;
+      }
+
+      .bold {
+        font-weight: 800;
+      }
+
+      .pink {
+        accent-color: #ffc300;
+      }
+
+      .bottom-space {
+        margin-bottom: 20px;
+      }
+
+      .top-space {
+        margin-top: 8px;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        margin: 10px 0;
+      }
+
+      input[type="date"],
+      input[type="email"],
+      input[type="number"],
+      input[type="password"],
+      input[type="search"],
+      input[type="tel"],
+      input[type="text"],
+      input[type="url"],
+      #textarea,
+      select,
+      textarea {
+        border: 1px solid #251c2f;
+        border-radius: 5px;
+        display: block;
+        margin: 10px 0;
+        padding: 10px;
+        width: 100%;
+        -webkit-transition: all 0.3s;
+        -o-transition: all 0.3s;
+        transition: all 0.3s;
+      }
+
+      input[type="date"]:focus,
+      input[type="email"]:focus,
+      input[type="number"]:focus,
+      input[type="password"]:focus,
+      input[type="search"]:focus,
+      input[type="tel"]:focus,
+      input[type="text"]:focus,
+      input[type="url"]:focus,
+      select:focus,
+      textarea:focus {
+        outline: #ffc300 10px !important;
+        accent-color: #ffc300 !important;
+        border-color: #ffc300 !important;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      input[type="submit"] {
+        border: 1px solid #251c2f;
+        border-radius: 5px;
+        display: block;
+        margin: 10px 0;
+        padding: 10px;
+        width: 100%;
+        color: #251c2f;
+        font-size: 1rem;
+        background-image: linear-gradient(
+          to bottom right,
+          #ffc300,
+          #ffc300,
+          #fff
+        );
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-image: linear-gradient(
+          to bottom right,
+          #fff,
+          #fff8e0,
+          #fff8e0
+        );
+        margin: 10px auto;
+        border-color: #ffc300 !important;
+        font-weight: bold;
+        outline: #ffc300 10px !important;
+        accent-color: #ffc300 !important;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      input[type="submit"]:active {
+        background-image: linear-gradient(to bottom right, #9085c1, #9085c1);
+        border-color: #ffc300 !important;
+        font-weight: bold;
+        outline: #ffc300 10px !important;
+        accent-color: #ffc300 !important;
+        -webkit-tap-highlight-color: transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <h1 id="title" class="bold">Survey Form</h1>
+    </header>
+    <main>
+      <form id="survey-form" class="container">
+        <p id="description">Thank you for taking the time!</p>
+        <label id="name-label" for="name">Name*</label>
+        <input
+          id="name"
+          class="input sm bottom-space pink"
+          type="text"
+          placeholder="Enter your name"
+          required
+        />
+        <label id="email-label" for="email">Email*</label>
+        <input
+          id="email"
+          class="input sm bottom-space pink"
+          type="email"
+          placeholder="Enter your email"
+          required
+        />
+        <label id="number-label" for="number"
+          >Age <span class="sm">(optional)</span></label
+        >
+        <input
+          id="number"
+          class="input sm bottom-space pink"
+          type="number"
+          min="0"
+          max="140"
+          placeholder="Enter your age"
+        />
+        <label id="dropdown-label" for="dropdown"
+          >Which option describes you best as a programmer?*</label
+        >
+        <select id="dropdown" class="option sm bottom-space">
+          <option disabled selected value>Select an option</option>
+          <option value="option1">I'm a newbie.</option>
+          <option value="option2">
+            I've been learning my first programming language for 3 months.
+          </option>
+          <option value="option2">
+            I've been programming for about a year.
+          </option>
+          <option value="option2">
+            I've been programming for 2 to 5 years.
+          </option>
+          <option value="option2">
+            I've been programming for more than 5 years.
+          </option>
+        </select>
+
+        <label for="checkboxes"
+          >Which topics are you interested in?*
+          <span class="sm">(Check all that apply) </span></label
+        >
+        <div id="checkboxes" class="container bottom-space">
+          <label for="checkbox-1" class="checkbox"
+            ><input
+              type="checkbox"
+              id="checkbox-1"
+              class="pink"
+              name="checkbox-set"
+              value="checkbox-1"
+            />
+            HTML and CSS</label
+          >
+          <label for="checkbox-2"
+            ><input
+              type="checkbox"
+              id="checkbox-2"
+              class="pink"
+              name="checkbox-set"
+              value="checkbox-2"
+            />
+            Java</label
+          >
+          <label for="checkbox-3"
+            ><input
+              type="checkbox"
+              id="checkbox-3"
+              class="pink"
+              name="checkbox-set"
+              value="checkbox-3"
+            />
+            Python</label
+          >
+          <label for="checkbox-4"
+            ><input
+              type="checkbox"
+              id="checkbox-4"
+              class="pink"
+              name="checkbox-set"
+              value="checkbox-4"
+            />
+            C#</label
+          >
+          <label for="checkbox-4"
+            ><input
+              type="checkbox"
+              id="checkbox-4"
+              class="pink"
+              name="checkbox-set"
+              value="checkbox-4"
+            />
+            Other (please specify)
+            <input
+              id="specify"
+              class="input sm"
+              type="text"
+              placeholder="Please specify here"
+            />
+          </label>
+        </div>
+        <label id="textarea-label" for="textarea"
+          >Feedback <span class="sm">(optional) </span></label
+        >
+        <textarea
+          id="textarea"
+          class="sm pink"
+          placeholder="Enter your message here..."
+        ></textarea>
+        <div class="top-space">
+          <input type="submit" id="submit" value="Submit" />
+        </div>
+        <div>
+          <p class="sm">
+            * - Only questions marked with an asterisk (*) are required.
+          </p>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>
